@@ -48,6 +48,11 @@ The maps are constructed using Plotly which provides python a graphic interactiv
 The covid dataset is extracted from kaggle.com because it provided country details that could be used to map out in plotly.
 The global map is mapped out according to the total number of confirmed cases, thus the colour scheme is also based on it. 
 
+## How the chloropleth map works
+Upon the user clicking the button provided on the webpage, the button will run the relevant batch file that will execute the python script with the chloropleth map code.
+Once the choropleth program is executed it will launch the heat map onto the browser for the user to user at their will.
+The is a double of each step of the process till complition, due to having a public version and a subscription version of the heat map.
+
 ## How to access the map
 Accessing the chlorpleth map is quite a simple process, the user can click on the button provided on the webpage, which will then execute the script that dislplays the appropriate map to the user according to the type of user they are (public or subscription).
 
