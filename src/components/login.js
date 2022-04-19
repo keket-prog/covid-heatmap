@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
 //Bootstrap Components
 import Alert from "react-bootstrap/Alert";
@@ -6,38 +7,36 @@ import Alert from "react-bootstrap/Alert";
 //Material UI Components
 import { Tooltip } from "@mui/material";
 
-export default class login extends Component {
-  state = {
-    email: "",
-    password: "",
-    error: null,
-  };
+const LoginPage = () => {
+  let { loginUser } = useContext(AuthContext);
+  return (
+    // <div>
+    //   <form onSubmit={loginUser}>
+    //     <input type="text" name="username" placeholder="enter user name" />
+    //     <input type="password" name="password" placeholder="password" />
+    //     <input type="submit" value="Submit" />
+    //   </form>
+    // </div>
+    <div className="heatmapWrapper">
+      <div className="heatmapContainer">
+        <div className="heatmapHeader">
+          <h1 date-testid="login-header">Login</h1>
+        </div>
+        {/* {this.state.error ? (
+          <Alert variant="danger">
+            <Alert.Heading> Error</Alert.Heading>
+            <p>{this.state.error}</p>
+          </Alert>
+        ) : null} */}
 
-  onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  render() {
-    return (
-      <div className="heatmapWrapper">
-        <div className="heatmapContainer">
-          <div className="heatmapHeader">
-            <h1 date-testid="login-header">Login</h1>
-          </div>
-          {this.state.error ? (
-            <Alert variant="danger">
-              <Alert.Heading> Error</Alert.Heading>
-              <p>{this.state.error}</p>
-            </Alert>
-          ) : null}
-          <div className="loginForm">
+        <div>
+          <form onSubmit={loginUser} className="loginForm">
             <input
-              type="email"
+              type="text"
               id="email"
-              name="email"
+              name="username"
               placeholder="Email ..."
-              onChange={this.onChange}
-            ></input>{" "}
+            />{" "}
             <br />
             <br />
             <input
@@ -45,21 +44,38 @@ export default class login extends Component {
               id="password"
               name="password"
               placeholder="Password ..."
-              onChange={this.onChange}
-            ></input>{" "}
+            />{" "}
             <br />
             <br />
             <Tooltip title="Log into account">
-              <button className="heatmapbtn" onClick={this.loginUser}>
-                Login
-              </button>
+              <input type="submit" className="heatmapbtn" value="Login" />
+              {/* Login
+              </input> */}
             </Tooltip>
-            <a className="text-color" href="/register">
-              <p>Create an Account</p>
-            </a>
-          </div>
+          </form>
+
+          {/* <form onSubmit={loginUser} className="loginForm">
+            <input
+              type="text"
+              id="email"
+              name="username"
+              placeholder="enter user name..."
+            />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="password"
+            />
+            <input type="submit" value="Submit" className="heatmapbtn" />
+          </form> */}
+          <a className="text-color" href="/sign-up">
+            <p>Create an Account</p>
+          </a>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default LoginPage;
