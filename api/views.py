@@ -9,6 +9,8 @@ from django.contrib.auth.hashers import make_password
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
+
+import requests
 # Create your views here.
 
 # addes the user name to the token
@@ -86,3 +88,9 @@ def getUsers(request):
    users = User.objects.all()
    serializer = UserSerializer(users, many=True)
    return Response(serializer.data)
+
+@api_view(['GET'])
+def homePage(request):
+   res = requests.get('https://disease.sh/v3/covid-19/jhucsse')
+   all_data = res.json()
+   return Response(all_data)
