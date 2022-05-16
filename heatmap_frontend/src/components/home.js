@@ -181,12 +181,12 @@ const data = [
 ];
 
 //fetch covid data
-const getData = () => {
-  fetch("../covid_country_summary.json")
-    .then((response) => response.json)
-    .then((data) => console.log(data));
-};
-getData();
+// const getData = () => {
+//   fetch("../covid_country_summary.json")
+//     .then((response) => response.json)
+//     .then((data) => console.log(data));
+// };
+// getData();
 
 //Component to display the home page
 export default function HomePage() {
