@@ -5,6 +5,7 @@
 /node_modules
 /.pnp
 .pnp.js
+heatmap_frontend/node_modules
 
 # testing
 /coverage
