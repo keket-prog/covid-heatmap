@@ -28,6 +28,9 @@ export const AuthProvider = ({ children }) => {
   /* used to trigger a new token being generated*/
   let [loading, setLoading] = useState(true);
 
+  /* state for covid data for the standard user*/
+  let [covidData, setCovidData] = useState(null);
+
   const history = useNavigate();
 
   /*function to login the user and get the auth token */
@@ -127,6 +130,14 @@ export const AuthProvider = ({ children }) => {
     console.log({ authToken });
   };
 
+  let getCovidData = async () => {
+    console.log(">>> Getting COVID data <<<");
+    let response = await fetch("http://127.0.0.1:8000/api/covid/all/");
+    let data = await response.json();
+    console.log(data);
+    setCovidData(data);
+  };
+
   //populates contextData with state
   let contextData = {
     user: user,
@@ -139,6 +150,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (loading) {
       updateToken();
+      getCovidData();
     }
     // calls updateToken every 4 minutes
     let fourMinutes = 1000 * 60 * 4;
