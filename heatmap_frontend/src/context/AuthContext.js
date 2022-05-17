@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
   /* state for covid data for the standard user*/
   let [covidData, setCovidData] = useState(null);
-
+  let [globalCovidData, setGlobalCovidData] = useState(null);
   const history = useNavigate();
 
   /*function to login the user and get the auth token */
@@ -130,12 +130,22 @@ export const AuthProvider = ({ children }) => {
     console.log({ authToken });
   };
 
+  /* get covid data - all countries */
   let getCovidData = async () => {
     console.log(">>> Getting COVID data <<<");
     let response = await fetch("http://127.0.0.1:8000/api/covid/all/");
     let data = await response.json();
     console.log(data);
     setCovidData(data);
+  };
+
+  /* Get global covid data */
+  let getGlobalCovidData = async () => {
+    console.log(">>> Getting Global COVID data <<<");
+    let response = await fetch("http://127.0.0.1:8000/api/covid/global/");
+    let data = await response.json();
+    console.log(data);
+    setGlobalCovidData(data);
   };
 
   //populates contextData with state
@@ -145,12 +155,15 @@ export const AuthProvider = ({ children }) => {
     logoutUser: logoutUser,
     loginUser: loginUser,
     registerUser: registerUser,
+    covidData: covidData,
+    globalCovidData: globalCovidData,
   };
 
   useEffect(() => {
     if (loading) {
       updateToken();
       getCovidData();
+      getGlobalCovidData();
     }
     // calls updateToken every 4 minutes
     let fourMinutes = 1000 * 60 * 4;

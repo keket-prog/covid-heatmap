@@ -91,6 +91,12 @@ def getUsers(request):
 
 @api_view(['GET'])
 def homePage(request):
-   res = requests.get('https://disease.sh/v3/covid-19/jhucsse')
+   res = requests.get('https://disease.sh/v3/covid-19/countries')
+   all_data = res.json()
+   return Response(all_data)
+
+@api_view(['GET'])
+def globalData(request):
+   res = requests.get('https://disease.sh/v3/covid-19/all')
    all_data = res.json()
    return Response(all_data)

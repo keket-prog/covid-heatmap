@@ -18,5 +18,6 @@ urlpatterns =[
    path('users/register/', views.registerUser, name='register'),
    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
    #covid data views
-   path('covid/all/', views.homePage, name="covid-all")
+   path('covid/all/', views.homePage, name="covid-all"),
+   path('covid/global/', views.globalData, name="covid-global")
 ]
