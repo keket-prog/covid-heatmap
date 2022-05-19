@@ -6,6 +6,8 @@ import NavBar from "./components/navbar";
 import LoginPage from "./components/login";
 import HomePage from "./components/home";
 import SignUp from "./components/sign-up";
+import SubscribedHeatmap from "./components/SubscribedHeatmap";
+
 import Footer from "./components/footer";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./uitls/PrivateRoute";
@@ -20,6 +22,15 @@ function App() {
           <NavBar />
         </header>
         <Routes>
+          <Route
+            path="/heatmap"
+            exact
+            element={
+              <PrivateRoute>
+                <SubscribedHeatmap />
+              </PrivateRoute>
+            }
+          />
           <Route path="/" exact element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignUp />} />

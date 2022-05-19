@@ -20,8 +20,8 @@ export const AuthProvider = ({ children }) => {
 
   /* gets the user name from the auth token*/
   let [user, setUser] = useState(() =>
-    localStorage.getItem("authToken")
-      ? jwt_decode(localStorage.getItem("authToken"))
+    JSON.parse(localStorage.getItem("user"))
+      ? JSON.parse(localStorage.getItem("user"))
       : null
   );
 
@@ -54,9 +54,11 @@ export const AuthProvider = ({ children }) => {
     console.log(data);
     if (response.status === 200) {
       setAuthToken(data);
-      setUser(jwt_decode(data.access));
-      console.log(`>>>User ${user} is logged in <<<`);
+      setUser(data);
+      console.log(`>>>User ${{ user }} is logged in <<<`);
       localStorage.setItem("authToken", JSON.stringify(data));
+      localStorage.setItem("user", JSON.stringify(data));
+      history("/heatmap");
     } else {
       alert("could not authenticate user");
     }
@@ -85,9 +87,11 @@ export const AuthProvider = ({ children }) => {
     console.log(data);
     if (response.status === 200) {
       setAuthToken(data.token);
-      setUser(jwt_decode(data.token.access));
+      setUser(data);
       console.log(`>>>User ${{ user }} is logged in <<<`);
       localStorage.setItem("authToken", JSON.stringify(data.token));
+      localStorage.setItem("user", JSON.stringify(data));
+      history("/heatmap");
     } else {
       alert("could not authenticate user");
     }
@@ -99,12 +103,13 @@ export const AuthProvider = ({ children }) => {
     setAuthToken(null);
     setUser(null);
     localStorage.removeItem("authToken");
+    localStorage.removeItem("user");
     history("/");
   };
 
   //gets new access token using the refresh token
   let updateToken = async () => {
-    console.log(">>> Updating Token <<<", { authToken });
+    console.log(">>> Updating Token <<<", { authToken }, { user });
     let response = await fetch("http://127.0.0.1:8000/api/token/refresh/", {
       method: "POST",
       headers: {
@@ -118,9 +123,9 @@ export const AuthProvider = ({ children }) => {
     console.log(data);
     if (response.status === 200) {
       setAuthToken(data);
-      setUser(jwt_decode(data.access));
+      setUser(JSON.parse(localStorage.getItem("user")));
       localStorage.setItem("authToken", JSON.stringify(data));
-      history("/"); // this replaces history.push('/)
+      history("/heatmap"); // this replaces history.push('/)
     } else {
       logoutUser();
     }

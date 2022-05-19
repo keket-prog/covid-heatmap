@@ -15,9 +15,13 @@ const NavBar = () => {
   const authenticatedLinks = (
     <React.Fragment>
       <Nav className="me-auto">
-        <Nav.Link href="#features" id="navlinks" className="heatmap-navlinks">
-          Heatmap
-        </Nav.Link>
+        <Link
+          to="/heatmap"
+          id="navlinks"
+          className="heatmap-navlinks navbtn nav-link"
+        >
+          Heapmap
+        </Link>
         <Nav.Link
           href="#pricing"
           id="navlinks"
@@ -30,7 +34,7 @@ const NavBar = () => {
       <Nav>
         <Navbar.Text id="navlinks">
           {" "}
-          {user && <p> Hello {user.name}</p>}
+          {user && <p> Hello, {user.username}</p>}
         </Navbar.Text>
       </Nav>
     </React.Fragment>

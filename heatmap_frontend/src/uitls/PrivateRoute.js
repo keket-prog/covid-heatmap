@@ -3,7 +3,7 @@ import { Route, Navigate } from "react-router-dom"; // Navigate replaces Redirec
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 
-// The props are the chilren of the component and the rest of the parameters like the path, exact etc.
+// The props are the children of the component and the rest of the parameters like the path, exact etc.
 const PrivateRoute = ({ children, ...rest }) => {
   console.log(">>> PrivateRoute <<<");
 

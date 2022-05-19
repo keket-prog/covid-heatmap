@@ -82,10 +82,17 @@ export default function HomePage() {
             Please login or register to view the dashboard. <br />
           </p> */}
           <div className="sidebar">
-            <div>
-              Global Cases: {globalCovidData.cases} | Global Deaths:{" "}
-              {globalCovidData.deaths} | Zoom: {zoom}
-            </div>
+            {globalCovidData === null ? (
+              <div>
+                Global Cases: loading ... | Global Deaths: loading ... | Zoom:{" "}
+                {zoom}
+              </div>
+            ) : (
+              <div>
+                Global Cases: {globalCovidData.cases} | Global Deaths:{" "}
+                {globalCovidData.deaths} | Zoom: {zoom}
+              </div>
+            )}
           </div>
           <div ref={mapContainer} className="map-container" />
         </div>

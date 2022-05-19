@@ -35,7 +35,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         serializer = UserSerializerWithToken(self.user).data
         for k, v in serializer.items():
             data[k] = v
-
+            print(data)
         return data
 
 
@@ -59,6 +59,7 @@ def getRoutes(request):
 def getUserProfile(request):
    user = request.user
    serializer = UserSerializer(user,many=False)
+
    return Response(serializer.data)
 
 #Register a new user

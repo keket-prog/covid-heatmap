@@ -187,3 +187,13 @@ a > p:hover {
   color: #1d3557;
   letter-spacing: 2px;
 }
+
+.map-marker {
+  background-image: url("./assets/mapbox-icon.png");
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+  cursor: pointer;
+  color: #e63946;
+}
