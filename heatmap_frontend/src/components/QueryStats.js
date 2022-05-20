@@ -7,14 +7,22 @@ import { Tooltip } from "@mui/material";
 const QueryStats = () => {
   let { covidData, globalCovidData } = useContext(AuthContext);
   const [queryData, setQueryData] = useState(null);
+  const [search, setSearch] = useState(null);
 
   const submitSearch = (e) => {
     e.preventDefault();
 
     var searchData = covidData.filter(
-      (data) => data.country === e.target.value
+      (data) => data.country === search || data.continent === search
     );
-    setQueryData(searchData);
+    console.log(searchData);
+    if (searchData.length === 0) {
+      setQueryData(null);
+    } else {
+      setQueryData(searchData);
+    }
+
+    console.log({ queryData });
   };
 
   return (
@@ -22,7 +30,7 @@ const QueryStats = () => {
       <div className="heatmapWrapper">
         <div className="heatmapContainer">
           <div className="heatmapHeader">
-            <h1 date-testid="login-header">Query Covid Stats</h1>
+            <h1 date-testid="login-header">Search Covid Stats</h1>
           </div>
 
           <div>
@@ -32,6 +40,7 @@ const QueryStats = () => {
                 id="search"
                 name="search"
                 placeholder="Enter search criteria"
+                onChange={(e) => setSearch(e.target.value)}
               />{" "}
               <br />
               <br />
@@ -39,6 +48,20 @@ const QueryStats = () => {
                 <input type="submit" className="heatmapbtn" value="Search" />
               </Tooltip>
             </form>
+
+            {queryData === null ? (
+              <div>
+                {" "}
+                <span>{search} Covid data is currently unavailable. </span>
+              </div>
+            ) : (
+              queryData.map((data) => (
+                <div key={data.index}>
+                  <p>{data.country}</p>
+                  <p>Cases: {data.cases}</p>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

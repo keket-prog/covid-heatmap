@@ -22,6 +22,13 @@ const NavBar = () => {
         >
           Heapmap
         </Link>
+        <Link
+          to="/querystats"
+          id="navlinks"
+          className="heatmap-navlinks navbtn nav-link"
+        >
+          Query Covid Stats
+        </Link>
         <Nav.Link
           href="#pricing"
           id="navlinks"

@@ -7,6 +7,7 @@ import LoginPage from "./components/login";
 import HomePage from "./components/home";
 import SignUp from "./components/sign-up";
 import SubscribedHeatmap from "./components/SubscribedHeatmap";
+import QueryStats from "./components/QueryStats";
 
 import Footer from "./components/footer";
 import { AuthProvider } from "./context/AuthContext";
@@ -28,6 +29,15 @@ function App() {
             element={
               <PrivateRoute>
                 <SubscribedHeatmap />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/querystats"
+            exact
+            element={
+              <PrivateRoute>
+                <QueryStats />
               </PrivateRoute>
             }
           />
