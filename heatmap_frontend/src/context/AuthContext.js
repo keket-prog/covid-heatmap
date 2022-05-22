@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
   let loginUser = async (e) => {
     e.preventDefault();
 
-    console.log(">>> Login details submitted <<<");
+    // console.log(">>> Login details submitted <<<");
 
     let response = await fetch("http://127.0.0.1:8000/api/token/", {
       method: "POST",
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
   let registerUser = async (e) => {
     e.preventDefault();
 
-    console.log(">>> Registration details submitted <<<");
+    //console.log(">>> Registration details submitted <<<");
 
     let response = await fetch("http://127.0.0.1:8000/api/users/register/", {
       method: "POST",
@@ -84,11 +84,11 @@ export const AuthProvider = ({ children }) => {
       }),
     });
     let data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (response.status === 200) {
       setAuthToken(data.token);
       setUser(data);
-      console.log(`>>>User ${{ user }} is logged in <<<`);
+      //console.log(`>>>User ${{ user }} is logged in <<<`);
       localStorage.setItem("authToken", JSON.stringify(data.token));
       localStorage.setItem("user", JSON.stringify(data));
       history("/heatmap");
@@ -109,7 +109,7 @@ export const AuthProvider = ({ children }) => {
 
   //gets new access token using the refresh token
   let updateToken = async () => {
-    console.log(">>> Updating Token <<<", { authToken }, { user });
+    // console.log(">>> Updating Token <<<", { authToken }, { user });
     let response = await fetch("http://127.0.0.1:8000/api/token/refresh/", {
       method: "POST",
       headers: {
@@ -120,7 +120,7 @@ export const AuthProvider = ({ children }) => {
       }),
     });
     let data = await response.json();
-    console.log(data);
+    //console.log(data);
     if (response.status === 200) {
       setAuthToken(data);
       setUser(JSON.parse(localStorage.getItem("user")));
@@ -137,19 +137,19 @@ export const AuthProvider = ({ children }) => {
 
   /* get covid data - all countries */
   let getCovidData = async () => {
-    console.log(">>> Getting COVID data <<<");
+    // console.log(">>> Getting COVID data <<<");
     let response = await fetch("http://127.0.0.1:8000/api/covid/all/");
     let data = await response.json();
-    console.log(data);
+    //console.log(data);
     setCovidData(data);
   };
 
   /* Get global covid data */
   let getGlobalCovidData = async () => {
-    console.log(">>> Getting Global COVID data <<<");
+    //console.log(">>> Getting Global COVID data <<<");
     let response = await fetch("http://127.0.0.1:8000/api/covid/global/");
     let data = await response.json();
-    console.log(data);
+    //console.log(data);
     setGlobalCovidData(data);
   };
 
