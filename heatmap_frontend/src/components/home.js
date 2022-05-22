@@ -83,14 +83,11 @@ export default function HomePage() {
           </p> */}
           <div className="sidebar">
             {globalCovidData === null ? (
-              <div>
-                Global Cases: loading ... | Global Deaths: loading ... | Zoom:{" "}
-                {zoom}
-              </div>
+              <div>Global Cases: loading ... | Global Deaths: loading ...</div>
             ) : (
               <div>
                 Global Cases: {globalCovidData.cases} | Global Deaths:{" "}
-                {globalCovidData.deaths} | Zoom: {zoom}
+                {globalCovidData.deaths}
               </div>
             )}
           </div>

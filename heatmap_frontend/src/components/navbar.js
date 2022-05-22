@@ -22,6 +22,9 @@ const NavBar = () => {
         >
           Heapmap
         </Link>
+        <div>
+          <h4>.</h4>
+        </div>
         <Link
           to="/querystats"
           id="navlinks"
@@ -29,6 +32,9 @@ const NavBar = () => {
         >
           Query Covid Stats
         </Link>
+        <div>
+          <h4>.</h4>
+        </div>
         <Nav.Link
           href="#pricing"
           id="navlinks"
@@ -41,7 +47,7 @@ const NavBar = () => {
       <Nav>
         <Navbar.Text id="navlinks">
           {" "}
-          {user && <p> Hello, {user.username}</p>}
+          {user && <span> Hello, {user.username}</span>}
         </Navbar.Text>
       </Nav>
     </React.Fragment>
@@ -57,6 +63,9 @@ const NavBar = () => {
         >
           Login
         </Link>
+        <div>
+          <h4>.</h4>
+        </div>
         <Link
           to="/sign-up"
           id="navlinks"
