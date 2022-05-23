@@ -86,13 +86,14 @@ Once both servers are running the application allows the user to:
 - View the Heatmap ![heatmap screen](heatmap_frontend/src/assets/Heatmap.png)
 - Query the COVID-19 data ![heatmap data search screen](heatmap_frontend/src/assets/Query-data.png)
 
-##Terminal interface manual for the COVID-19 app.
+## Terminal interface manual for the COVID-19 app.
 
-###How to run the CLI version of the COVID-19 app.
+### How to run the CLI version of the COVID-19 app.
 
 To run the app, you will need Python installed.
 
-To verify if python is installed on your device open the terminal/command prompt/shell on your device. 
+To verify if python is installed on your device open the terminal/command prompt/shell on your device.
+
 For Windows:
 ```
 python --version
@@ -107,7 +108,7 @@ But if you receive different results then that means Python is not installed on 
 
 To download and install Python on your device you have to visit [https://python.org](https://python.org) and download the appropriate version of python sutable for your device.
 
-##How to use the COVID-19 CLI application. Upon downloading the Covid_Terminal_Interface.py file.
+## How to use the COVID-19 CLI application. Upon downloading the Covid_Terminal_Interface.py file.
 
 Open the terminal/command prompt/shell on your device. 
 Navigate to where you have stored this application. e.g `C:\Users\Downloads\Terminal_Covid_App`
