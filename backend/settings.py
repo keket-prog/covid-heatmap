@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-i*6=_4^0oue8z$awj#5w#(4i0m)soof*ido*n_c-45ifd+2yyc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -168,6 +168,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# STATICFILES_DIRS = [
+# 		BASE_DIR / 'heatmap_frontend/build/static'
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

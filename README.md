@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# COVID-19 Heatmap
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
 
-## Available Scripts
+This is a paired coding project that forms part of the HyperionDev Graduade Program.
 
-In the project directory, you can run:
+The project aims to create a COVID-19 Heatmap web application that allows registered users to view and query COVID-19 data for regions and countries that they are interested in.
 
-### `yarn start`
+## Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## High Level Requirements
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The high level requirements include:
 
-### `yarn test`
+- User registration and authentication
+- User may query COVID-19 data for any reagion/continent/country/ of interest
+- Users can download images of heatmaps they query
+- Users can subscribe to receive 24 hour email updates on a particular heapmap
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Users can unsubscribe from email updates
+* Users can make heatmap queries from the command line
+* The public-facing web page only displays heatmaps with new cases and deaths
 
-### `yarn build`
+## Data Sources
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A number of COVID-19 data sources were considered to feed into the heamap. The availability of an API to request the data factored highly in the decision of the data source that would be used.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Global Health - [https://global.health](https://global.health/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Review of the COVID-19 data maintained on global.health showed that the data is not up to date. This could be lmiting on the functionality that allows users to subscribe for 24 hour email updates.
 
-### `yarn eject`
+### Data Rich Services - COVID-19 Data Center - [https://covid19.richdataservices.com/](https://covid19.richdataservices.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The coverage of the data available Rich Data Services is limited to daily data per country on the following:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- confirmed cases
+- deaths
+- recoveries
+- active cases
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The international data is sourced from the Johns Hopkins University CCSE Country Reports [https://github.com/CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### disease.sh - Open Disease Data API - [https://disease.sh/](https://disease.sh/)
 
-## Learn More
+This API allows COVID-19 data requests from the following sources for free:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Worldometers, updated every 10 minutes
+- John Hopkins University, updated every 10 minutes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The Worldometer data includes the following:
 
-### Code Splitting
+- cases,
+- deaths,
+- country longitude and latitude
+- recoveries
+- COVID tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This was the data source that was finally used for the heatmap. The availability of the logatude and latitude per country allowed for the COVID-19 stats to be mapped to the specific country.
 
-### Analyzing the Bundle Size
+## COVID-19 Heatmap app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The COVID-19 Heatmap App was built using a React Front-end and a Django Back-end. Mapbox was used to display the COVID-19 map with the data points showing the stats per country.
 
-### Making a Progressive Web App
+### How to run the app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To run the app both the front-end and the back-end servers have to be running.
 
-### Advanced Configuration
+The application front-end is in the heatmap_frontend folder. In the CLI install the front-end dependencies by running the command `npm install`.
+To start the front-end run the command `npm start `. The front-end app will runs on localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The backend will require a virtual environment to run. In the root of the project start the virtual environment and then run the command ` python manage.py runserver`
 
-### Deployment
+A Mapbox API key will need to be aquired to allow the Mapbox API to be usable. The API key will need to be entered on the home.js and the SubscribedHeatmap.js files in heatmap_frontend/src/components directory.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+import mapboxgl from "mapbox-gl";
 
-### `yarn build` fails to minify
+mapboxgl.accessToken = 'xxxxx'
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+
+Once both servers are running the application allows the user to:
+
+- Register an account ![register screen](heatmap_frontend/src/assets/Register.png)
+- Login to the account ![login screen](heatmap_frontend/src/assets/login.png)
+- View the Heatmap ![heatmap screen](heatmap_frontend/src/assets/Heatmap.png)
+- Query the COVID-19 data ![heatmap data search screen](heatmap_frontend/src/assets/Query-data.png)
