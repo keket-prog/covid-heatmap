@@ -55,7 +55,7 @@ The Worldometer data includes the following:
 - recoveries
 - COVID tests
 
-This was the data source that was finally used for the heatmap. The availability of the logatude and latitude per country allowed for the COVID-19 stats to be mapped to the specific country.
+This was the data source that was finally used for the heatmap. The availability of the longitude and latitude per country allowed for the COVID-19 stats to be mapped to the specific country.
 
 ## COVID-19 Heatmap app
 
