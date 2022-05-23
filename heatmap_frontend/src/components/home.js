@@ -7,8 +7,7 @@ import { Tooltip } from "@mui/material";
 //mapbox
 import mapboxgl from "mapbox-gl";
 
-mapboxgl.accessToken =
-  "pk.eyJ1Ijoia3RvaDAwMSIsImEiOiJja3c0cG5waWowNm83Mm9yaHlnOGR1a2pmIn0.bqHDlPp7lU6GzPqk7LRacg";
+mapboxgl.accessToken = "xxxxx";
 
 //Component to display the home page for all users
 export default function HomePage() {

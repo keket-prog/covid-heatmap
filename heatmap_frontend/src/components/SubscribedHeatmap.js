@@ -8,8 +8,7 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
-mapboxgl.accessToken =
-  "pk.eyJ1Ijoia3RvaDAwMSIsImEiOiJja3c0cG5waWowNm83Mm9yaHlnOGR1a2pmIn0.bqHDlPp7lU6GzPqk7LRacg";
+mapboxgl.accessToken = "xxxx";
 
 //Component to display the home page
 const SubscribedHeatMap = () => {
