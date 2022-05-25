@@ -22,7 +22,7 @@ const QueryStats = () => {
     var searchData = covidData.filter(
       (data) => data.country === search || data.continent === search
     );
-    console.log(searchData);
+
     if (searchData.length === 0) {
       setQueryData(null);
     } else {
