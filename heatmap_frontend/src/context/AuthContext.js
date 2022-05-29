@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
 
     // console.log(">>> Login details submitted <<<");
 
-    let response = await fetch("http://127.0.0.1:8000/api/token/", {
+    let response = await fetch("/api/token/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
     if (response.status === 200) {
       setAuthToken(data);
       setUser(data);
-      console.log(`>>>User ${{ user }} is logged in <<<`);
+      //console.log(`>>>User ${{ user }} is logged in <<<`);
       localStorage.setItem("authToken", JSON.stringify(data));
       localStorage.setItem("user", JSON.stringify(data));
       history("/heatmap");
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
   let registerUser = async (e) => {
     e.preventDefault();
 
-    let response = await fetch("http://127.0.0.1:8000/api/users/register/", {
+    let response = await fetch("/api/users/register/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -132,7 +132,7 @@ export const AuthProvider = ({ children }) => {
   /* get covid data - all countries */
   let getCovidData = async () => {
     // console.log(">>> Getting COVID data <<<");
-    let response = await fetch("http://127.0.0.1:8000/api/covid/all/");
+    let response = await fetch("/api/covid/all/");
     let data = await response.json();
 
     setCovidData(data);
@@ -141,7 +141,7 @@ export const AuthProvider = ({ children }) => {
   /* Get global covid data */
   let getGlobalCovidData = async () => {
     //console.log(">>> Getting Global COVID data <<<");
-    let response = await fetch("http://127.0.0.1:8000/api/covid/global/");
+    let response = await fetch("/api/covid/global/");
     let data = await response.json();
 
     setGlobalCovidData(data);
