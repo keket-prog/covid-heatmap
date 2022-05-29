@@ -9,6 +9,7 @@ djangorestframework = "*"
 django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
 requests = "*"
+django-on-heroku = "*"
 
 [dev-packages]
 

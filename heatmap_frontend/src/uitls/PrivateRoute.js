@@ -10,6 +10,8 @@ const PrivateRoute = ({ children, ...rest }) => {
   //const isAuth = false;
   let { user } = useContext(AuthContext);
 
+  console.log(">>> PrivateRoute <<<");
+
   return (
     <React.Fragment {...rest}>
       {!user ? <Navigate to="/login" /> : children}
