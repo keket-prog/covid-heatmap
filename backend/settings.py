@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from pickle import FALSE
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,9 +25,9 @@ from datetime import timedelta
 SECRET_KEY = 'django-insecure-i*6=_4^0oue8z$awj#5w#(4i0m)soof*ido*n_c-45ifd+2yyc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = false
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://covidheatmap-keke-lwandiso.herokuapp.com/']
 
 
 # Application definition
