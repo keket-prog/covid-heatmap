@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-i*6=_4^0oue8z$awj#5w#(4i0m)soof*ido*n_c-45ifd+2yyc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://covidheatmap-keke-lwandiso.herokuapp.com/']
+ALLOWED_HOSTS = ["https://covidheatmap-keke-lwandiso.herokuapp.com/"]
 
 
 # Application definition
